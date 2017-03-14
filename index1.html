@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="imagetoolbar" content="no">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<title>赛车</title>
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" type="text/css" href="css/loading.css"/>
+<link rel="stylesheet" type="text/css" href="css/index.css"/>
+<script>
+(function (doc, win) {
+    var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+            window.clientWidth = docEl.clientWidth;
+            if (!window.clientWidth) return;
+            docEl.style.fontSize = 40 * (window.clientWidth / 640) + 'px';
+            window.base = 40 * (window.clientWidth / 640);
+        };
+    // Abort if browser does not support addEventListener
+    if (!doc.addEventListener) return;
+    win.addEventListener(resizeEvt, recalc, false);
+    doc.addEventListener('DOMContentLoaded', recalc, false);
+})(document, window);
+</script>
+</head>
+<body>
+<div class="loading">
+    <div class='rings'>
+      <div class='ring-1'>
+        <div class='ring-2'>
+          <div class='ring-3'>
+            <div class='ring-4'>
+              <div class='ring-5'></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>  
+
+
+<!-- part01 封面 -->
+    <div id="wrap">
+        <div id="logo" class="animated pulse"><img src="img/bg/logo.png"/></div>
+        <div id="title" class="animated fadeInRightBig"><img src="img/part01/30s.png"/></div>
+        <div id="win" class="animated fadeInRightBig"><img src="img/part01/win.png"></div>
+        <div id="describe" class="animated fadeInLeftBig"><img src="img/part01/describe.png"></div>
+        <div id="challenge" class="animated fadeIn"><img src="img/part01/go.png" class="animated bounceIn"/></div>
+        <p id="game" class="animated bounce">游戏规则</p>
+        
+    </div>
+
+
+<!--part01_wrap 游戏规则-->
+<div class="part01_wrap">
+    <img class="part07_img1" src="img/part01/30s.png"/>
+    <img class="part07_img2" src="img/part07/cancle.png" id="part01_cancle"/>
+    <div class="part01_game">
+        <p class="part01_p1">游戏规则</p>
+        <p class="part01_p2">1、玩赛车游戏后发给好友邀请TA来评价，若好友选择“晋级”，则可参与大转盘抽奖（需关注海泉湾官方微信服务号）</p>
+        <p class="part01_p2">2、若多次玩游戏，系统将以最好成绩为准；</p>
+        <p class="part01_p2">3、港中旅（珠海）海泉湾度假区有权在法律范围内对本次活动内容进行调整。</p>
+    </div>
+</div>
+
+
+
+
+<!-- part02 说明 -->
+    <div class="second">
+        <img src="img/bg/logo.png" class="seclogo"/>
+        <img src="img/part02/you.png" class="you"/>
+        <p class="there">这里是港中旅·珠海海泉湾度假区</p>
+        <div class="playgo"><img src="img/part02/startgo.png"/></div>
+        <div class="bottom">
+            <p class="bottom_p1">游戏玩法</p>
+            <p class="bottom_p2"><span class="yellow">点击左右键</span>或加速按钮,可控制汽车<span class="yellow">躲过障碍</span>,在30秒内躲过障碍总数不少于30个即可成功通关,随后<span class="yellow">分享给好友邀请其评价</span>,好友点赞"晋级"后,你就可以<span class="yellow">参与转盘抽奖啦!</span></p>
+            <p class="bottom_p3"><span class="left">转左</span><span class="right">转右</span></p>
+        </div>
+    </div>
+    
+
+<!--part03 游戏页面-->
+<canvas id="myCanvas" width="320" height="480"></canvas>
+<div id="boss">  
+        <div id="timer"><img src="img/part03/clock.png"/><span id="text">0:0:30</span> </div>
+        <div id="left">
+                <!--<img src="img/part03/button_left.png" id="left1"/>-->
+        </div>
+        <div id="right">
+                <!--<img src="img/part03/button_right.png" id ="right1"/>-->
+        </div>
+        <div id="myCar"><img src="img/part03/mycar.png" id="carImg"/></div>
+        <div id="speed"><img src="img/part03/speed_add.png"/></div>
+       <!-- <img src="img/part03/starting_line.png" class="line animated fadeOutDownBig"/>-->
+        <img src="img/part03/ready_red.png" class="light animated fadeInDown"/>
+        <p class="animated fadeInUpBig ready">READY</p>
+</div>
+
+    
+    
+<!--part04 过关啦！-->  
+<div class="invite">
+        <img src="img/bg/logo.png" class="seclogo"/>
+        <img src="img/part04/success.png" class="invite_img"/>
+        <p class="invite_p1">你共闯过了<span class="invite_span1"></span>个障碍物</p>
+        <p class="invite_p2">胜出全国<span class="invite_span1">7%</span>玩家</p>
+        <div class="invite_cartoon"><p class="invite_p3">快邀请你的朋友做导师,只要有1人让你晋级即可领取金钥匙抽大奖啦!</p></div>
+        <!--<img src="img/part04/invite.png" alt="" class="invite_invite">-->
+            <img src="img/part04/prizego.png" class="invite_invite"/>
+        <img src="img/part05/rank.png" alt="" class="invite_rank">
+    </div>  
+    
+
+
+<!--part05 很遗憾，再来一次-->
+    <div class="again">
+        <img src="img/bg/logo.png" class="seclogo"/>
+        <img src="img/part05/regret.png" class="regret"/>
+        <p class="again_p1">你共闯过了<span class="again_span1"></span>个障碍物</p>
+        <p class="again_p2">胜出全国<span class="again_span1">7%</span>玩家</p>
+        <div class="again_cartoon"><p class="again_p3"><span class="again_span1">赶紧邀请好友一起玩</span>,只要有一个人选择"晋级"即可领取金钥匙并抽大奖啦!</p></div>
+        <img src="img/part05/again.png" alt="" class="again_go2">
+            <img src="img/part04/invite.png" class="again_go"/>
+        <img src="img/part05/rank.png" alt="" class="again_rank">
+    </div>
+    
+    
+    
+<!--part06 邀请导师-->
+<div class="part06">
+    <p class="part06_p1">淘汰还是晋级就看他们的啦</p>
+    <img class="part06_img1" src="img/part06/line06.png"/>
+    <img class="part06_img2" src="img/part06/cartoon06.png"/>
+    <p class="part06_p2">只要有1位好友选择“晋级”你即可获参与免费地中海风情游抽奖哦！</p>
+</div>
+
+
+<!--part07 排行榜-->
+<div class="part07">
+    <img class="part07_img1" src="img/part01/30s.png"/>
+    <img class="part07_img2" src="img/part07/cancle.png" id="part07_cancle"/>
+    <img class="part07_img3" src="img/part07/level.png"/>
+    <div class="part07_wrap">
+        <ul class="uls">
+            <li>头像</li>
+            <li>昵称</li>
+            <li>得分</li>
+        </ul>
+        <div class="part07_in">
+            <!--<img class="part07_img4" src="img/part03/hinder.png"/>
+            <span >刘畅</span>
+            <span >30</span>-->
+        </div>
+    </div>
+</div>
+
+
+
+<!--part11 恭喜晋级，你可以抽奖啦-->
+<div class="part11">
+    <img  class="logo" src="img/bg/logo.png"/>
+    <img  class="cong" src="img/part11/goprize.png"/>
+    <div class="cute">
+        <p class="part11_p1">马上抽免费地中海风情游</p>
+        <p class="part11_p2">奖池共有林志颖签名书1份、星赏假期套票4份、星悦套票8份、海景房12份、海洋温泉门票40份、神秘岛门票40份、梦幻剧场门票40份、海泉湾公仔40份、明星海报300份等。</p>
+    </div>
+    <img  class="prizego" src="img/part11/prizego.png"/>
+</div>
+
+
+
+<!--part12 转盘页面-->
+<div class="part12">
+    <img class="logo" src="img/bg/logo.png"/>
+    <img class="zhuanpan" src="img/part12/zhuanpan.png"/>
+    <img class="button" src="img/part12/button.png"/>
+    <div class="carwrap">
+        <img class="littlecar" src="img/part12/littlecar.png"/>
+    </div>
+</div>
+
+
+
+<!--part13 转盘得奖页面-->
+<div class="part13">
+    <img class="gongxi" src="img/part13/gongxini.png"/>
+    <img class="boom"  src="img/part13/boom.png"/>
+    <img class="write" src="img/part13/write.png"/>
+    <p class="part13_p1"> 分享给好友，一起来玩哟！</p>
+    <!--<p class="part13_p2">123</p>-->
+    <img src="img/part13/zp0.png" class="part13_img"/>
+</div>
+
+
+
+<!--part14 领奖信息登记-->
+<div class="part14">
+    <p class="part14_p1">领奖信息登记</p>
+    <p class="part14_p2">请务必完整填写，凭信息核对领取。</p>
+    <div class="part14_divwrap">
+        <form>
+            <div class="part14_div1">姓名 <input type="text" /></div>
+            <div class="part14_div2">电话 <input type="tel" /></div>
+            <div class="part14_div3">住址 <select><option value="中国">中国</option><option value="其他">其他</option></select><select><option value="北京">北京</option></select><br/><input type="text" name="" id="" value="" />
+            </div>
+        </form>
+    </div>
+    <img class="ok" src="img/bg/bg5.png"/>
+    <img class="infor" src="img/part14/information.png"/>
+    <p class="part14_p3">填好了</p>
+</div>
+
+
+
+<!--part15 成功提交啦-->
+<div class="part15">
+    <p class="part15_p1">成功提交啦！</p>
+    <img  src="img/part13/boom.png"/>
+    <p class="part15_p2">奖品将于活动结束后统一安排寄出，请耐心关注海泉湾官方微信</p>
+</div>
+
+
+<!--part16 未中奖页面-->
+<div class="part16">
+    <p class="part16_p1">很遗憾<br/>没中奖呢</p>
+    <img src="img/part16/cry.png"/>
+</div>
+
+
+
+</body>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="js/jquery-1.12.3.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/create.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/zhuanpan.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+<!--画布-->
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    var car = $("#carImg");
+    var carB = $("#carImg").offset().top + $("#carImg").height();
+    var sH,sW;
+    var windowW = document.body.clientWidth;
+    var windowH = document.body.clientHeight;
+    canvas.width = windowW;
+    canvas.height = windowH;
+    window.imgScale = windowW/414;
+    window.addEventListener("resize", resizeCanvas, false);
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        adp();
+    }
+    adp();
+      
+//定义需要的变量
+var num = 0; //帧
+var count = 30;//时钟倒计时
+var left = windowW*0.4;
+var yNum = 0;
+var hinderArr = [];
+var carhinderArr = [];
+var doorArr = [];
+var w = 30;
+var h = 30;    
+var gameoverBol = false;
+var line = parseInt(canvas.width/w);
+var carBol = true;
+var score = 0;
+var leftBol = false;
+var rightBol = false;
+var judgeBol;
+var count1 = new Date().getTime();
+var openid = '<?php echo $openid; ?>';
+var username = '<?php echo $username; ?>';
+var headimgurl = '<?php echo $headimgurl; ?>';
+var imgs = {car:"img/part03/car.png",hinder:"img/part03/hinder.png",foel:"img/part03/foe_l.png",foer:"img/part03/foe_r.png"}
+var arr = ['img/bg/bg1.png','img/bg/bg2.png','img/bg/bg3.png','img/bg/bg4.png','img/bg/bg5.png','img/bg/logo.png','img/part01/30s.png','img/part01/describe.png','img/part01/go.png','img/part01/play.png','img/part01/win.png','img/part02/gd.jpg','img/part02/play.png','img/part02/startgo.png','img/part02/you.png','img/part03/button_left.png','img/part03/button_right.png','img/part03/car.png','img/part03/clock.png','img/part03/foe_l.png','img/part03/foe_r.png','img/part03/hinder.png','img/part03/mycar.png','img/part03/mycar_add.png','img/part03/ready_green.png','img/part03/ready_red.png','img/part03/ready_yellow.png','img/part03/road.png','img/part03/speed_add.png','img/part03/speed_cut.png','img/part03/starting_line.png','img/part04/invite.png','img/part04/prizego.png','img/part04/success.png','img/part05/again.png','img/part05/cartoon2.png','img/part05/rank.png','img/part05/regret.png','img/part06/cartoon06.png','img/part06/line06.png','img/part07/cancle.png','img/part07/level.png','img/part11/cute.png','img/part11/goprize.png','img/part12/button.png','img/part12/littlecar.png','img/part12/zhuanpan.png','img/part13/boom.png','img/part13/gongxini.png','img/part13/write.png','img/part14/information.png','img/part16/cry.png']
+var imgsArr = [];
+for(var i = 0,l=arr.length; i <l; i++){
+    var img = new Image();
+    img.src = arr[i];
+    imgsArr.push(img);
+    var imgNum = 0;
+    img.onload = function(){
+        imgNum++;
+        if(imgNum>=imgsArr.length){
+            $('.loading').hide();
+            $('#wrap').show();
+            $('#game').on('touchstart',function(){$('.part01_wrap').show();$('#part01_cancle').on('touchstart',function(){$('.part01_wrap').hide()})})
+            init();  
+        }
+    }
+}
+function init(){
+    $("#challenge").on("touchstart",function () {
+         $("#wrap").hide();
+         $(".second").show();
+    })
+    $(".playgo").on("touchstart",function () {
+            $(".second").hide();
+            $("#boss").show();
+            $("#myCanvas").show();
+            main(); 
+  })        
+}
+
+function main(){  //帧动画
+        num++;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        carCrashhinder();
+        carCrashcarhinder();
+        carCrashdoor();
+        //时钟倒计时 --不能这么写！
+//      if(num%60==0&&num>240){
+//          count--;
+//          if (count<10){
+//                  $("#text").html("0:0:0"+count);
+//              }else{
+//                  $("#text").html("0:0:"+count);
+//              }
+//              if (count<0) {
+//                  gameOver();
+//                  return;
+//              }
+//      }
+
+        //时钟倒计时
+        if(num%60==0&&num>240){
+            countdown();
+        }
+        if(count<0){
+            gameOver();
+            return;
+        }
+        
+        
+        //红绿灯变化
+        if(num==61){$('.light').attr("src","img/part03/ready_yellow.png")}
+        if(num==121){$('.light').attr("src","img/part03/ready_green.png")}
+        
+        //红绿灯飞出去
+        if(num==181){$('.light').removeClass("fadeInDown");$('.light').addClass("fadeOutUp");
+                              $('.ready').removeClass("fadeInDown");$('.ready').addClass("fadeOutUp");}
+        
+        if(num>201){
+            //背景图滚动
+            var imgObj = new Image();
+            imgObj.src = "img/part03/road.png";
+            if (num % 2 == 0) {
+                  if (carBol){yNum += 4;}else{ yNum += 8;}
+                  if (yNum >= canvas.height) {yNum = 0;}
+             }
+             ctx.drawImage(imgObj, 0, yNum, canvas.width, canvas.height);
+             ctx.drawImage(imgObj, 0, yNum - canvas.height, canvas.width, canvas.height);
+            
+             // 路障
+                    if (carBol){
+                        if (num % 97 ==0){
+                            var hinderObj = new Hinder();
+                            hinderArr.push(hinderObj);
+                        }
+                    }else{
+                        if (num % 57 ==0){
+                            var hinderObj = new Hinder();
+                            hinderArr.push(hinderObj);
+                        }
+                    }
+                    for(var i = 0; i<hinderArr.length; i++){
+                        var bol = hinderArr[i].draw();
+                        if (bol){i--;}
+                    }
+
+                    if (carBol){
+                        if (num % 177 ==0){
+                            var carhinderObj = new CarHinder();
+                            carhinderArr.push(carhinderObj);
+                        }
+                    }else{
+                        if (num % 87 ==0){
+                            var carhinderObj = new CarHinder();
+                            carhinderArr.push(carhinderObj);
+                        }
+                    }
+                    for(var i = 0; i<carhinderArr.length; i++){ 
+                        var doorY = carhinderArr[i].y;
+                        var doorX = carhinderArr[i].x;
+                        var doorW = carhinderArr[i].w;
+                        var doorH = carhinderArr[i].h;
+                        var bol = carhinderArr[i].draw();
+                        if (bol){i--;} 
+                        if (doorY == 60){
+                            if (car.offset().left+car.width()<=doorX+doorW/2){
+                                var door = new Door(imgs.foel,doorX-(50*imgScale/2-10*imgScale),doorY+doorH*0.19*imgScale);
+                                doorArr.push(door);
+                            }else{
+                                var door = new Door(imgs.foer,doorX+doorW*0.65*imgScale-(50*imgScale/2-10*imgScale),doorY+doorH*0.19*imgScale);
+                                doorArr.push(door);
+                            }
+                        }
+                    }
+                    for (var i = 0; i<doorArr.length;i++){
+                        var bol = doorArr[i].draw();
+                        if (bol){ i--;}
+                    }          
+        }
+        if(num>200){
+            $("#left").on({touchstart:function () {leftBol = true },
+                     touchend:function () {leftBol = false} });
+            $("#right").on({touchstart:function () { rightBol = true},
+                     touchend:function () {rightBol = false}});
+             carMove();
+        };
+        
+        if (num > 3000) {num = 0;}
+        if (gameoverBol){ return;}
+        requestAnimationFrame(main);
+    }
+
+
+//    左右移动
+$('#left').on("touchstart",function (e) { e.preventDefault()});
+$('#right').on("touchstart",function (e) { e.preventDefault()});
+function carMove() {
+        if (leftBol){
+            left-=1;
+            $("#myCar").css({left:left});
+        }else if(rightBol) {
+            left+=1;
+            $("#myCar").css({left:left});
+        }
+}
+//加速，减速
+$("#speed").on("touchstart",function () {
+        if (carBol){
+                 $("#carImg").attr("src","img/part03/mycar_add.png");
+             $("#speed img").attr("src","img/part03/speed_cut.png");
+             carBol = false;
+        }else {
+             $("#carImg").attr("src","img/part03/mycar.png");
+             $("#speed img").attr("src","img/part03/speed_add.png");
+             carBol = true;
+        }
+})
+
+$('.again_go').on('touchstart',function(){
+        $('.part06').show();
+        $('.part06').on('touchstart',function(){
+            $(this).hide();
+        })
+});
+$('.invite_rank').on('touchstart',function(){
+        $('.part07').show();
+        $('#part07_cancle').on('touchstart',function(){
+            $('.part07').hide();
+        })
+});
+$('.again_rank').on('touchstart',function(){
+        $('.part07').show();
+        $('#part07_cancle').on('touchstart',function(){
+            $('.part07').hide();
+        })
+});
+$('.prizego').on('touchstart',function(){
+    $('.part11').hide();
+    $('.part12').show();
+})
+$('.invite_invite').on('touchstart',function(){
+    $('.part04').hide();
+    $('.part11').show();
+})
+$('.again_go2').on('touchstart',function(){
+ window.location.reload();
+})
+function carCrashhinder() {
+    for (var i = 0; i < hinderArr.length; i++ ){
+        var obj = {x:hinderArr[i].x,y:hinderArr[i].y,w:hinderArr[i].w*imgScale*0.6,h:hinderArr[i].h*imgScale*0.6};
+        if (crashTest(obj,car)){
+            gameOver();
+            return true;
+        }
+    }
+    return false;
+}
+
+function carCrashcarhinder() {
+    for (var i = 0; i < carhinderArr.length; i++ ){
+        var obj = {x:carhinderArr[i].x,y:carhinderArr[i].y,w:carhinderArr[i].w*imgScale*0.6,h:carhinderArr[i].h*imgScale*0.6};
+        if (crashTest(obj,car)){
+            gameOver();
+            return true;
+        }
+    }
+    return false;
+}
+
+function carCrashdoor() {
+    for (var i = 0,l = doorArr.length;i<l; i++){
+        var obj = {x:doorArr[i].x,y:doorArr[i].y,w:doorArr[i].w*imgScale*0.6,h:doorArr[i].h*imgScale*0.6};
+        if (crashTest(obj,car)){
+            gameOver();
+            return true;
+        }
+    }
+    return false;
+}
+function countdown(){
+    var count2 = new Date().getTime();
+        if(parseInt(count2-count1)/1000>=1){
+            count--;
+            if (count<10){
+                    $("#text").html("0:0:0"+count);
+               }else if(count>10){
+                    $("#text").html("0:0:"+count);
+                }
+            count1 = count2;
+        }
+}
+    </script>
+</html>
